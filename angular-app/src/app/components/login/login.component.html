@@ -1,1 +1,17 @@
-<p>login works!</p>
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="username" name="username" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="password" name="password" type="password" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="login()">Login</button>
+    </form>
+  </mat-card-content>
+  <button (click)="navigateToRegister()">Register</button>
+</mat-card>
