@@ -20,14 +20,21 @@ export class AuthService {
     return this.http.post('http://localhost:3000/auth/register', { username, password });
   }
 
-  private setSession(authResult : AuthResult) {
-    localStorage.setItem('token', authResult.access_token);
+  getUser(): Observable<any> {
+    return this.http.get('http://localhost:3000/auth/user');
+  }
+
+  private setSession(authResult: AuthResult) {
+    localStorage.setItem('token', "Bearer " + authResult.access_token);
   }
 
   logout() {
     localStorage.removeItem('token');
   }
 
+  public getToken() {
+    return localStorage.getItem('token');
+  }
   public isLoggedIn() {
     return !!localStorage.getItem('token');
   }

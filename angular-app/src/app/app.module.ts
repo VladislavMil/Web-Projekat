@@ -14,10 +14,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { WorkspaceComponent } from './components/workspace/workspace.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import { AuthInterceptor } from './interceptor/interceptor';
+import { CreateProjectComponent } from './components/create-project/create-project.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CreateProjectDialogComponent } from './components/create-project-dialog/create-project-dialog.component';
+import { AppState } from './app.state';
+import { projectReducer } from './store/project/project.reduce';
+import { ProjectEffects } from './store/project/project.effect';
+import { ProjectListComponent } from './components/project-list/project-list.component';
 
 @NgModule({
   declarations: [
@@ -25,22 +33,32 @@ import {MatButtonModule} from '@angular/material/button';
     LoginComponent,
     RegisterComponent,
     WorkspaceComponent,
+    CreateProjectComponent,
+    CreateProjectDialogComponent,
+    ProjectListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MatCardModule,
     MatFormFieldModule,
     FormsModule,
     HttpClientModule,
     MatInputModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    StoreModule.forRoot<AppState>({projects:projectReducer}),
+    StoreDevtoolsModule.instrument({
+      maxAge:25,
+      logOnly: !isDevMode()
+    }),
+    EffectsModule.forRoot([ProjectEffects])
   ],
-  providers: [
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true},
     provideClientHydration(),
     provideAnimationsAsync()
   ],

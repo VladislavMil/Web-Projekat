@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterComponent {
 
-  username: string = ""; //komenentar
+  username: string = "";
   password: string = "";
   passwordLengthValid: boolean = false;
   passwordHasNumber: boolean = false;

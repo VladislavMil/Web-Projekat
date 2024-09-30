@@ -1,0 +1,8 @@
+<div *ngFor="let project of projects$ | async">
+    <mat-card>
+        <mat-card-title>{{ project.name }}</mat-card-title>
+        <mat-card-content>
+            <p>{{ project.description }}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
