@@ -26,6 +26,14 @@ import { AppState } from './app.state';
 import { projectReducer } from './store/project/project.reduce';
 import { ProjectEffects } from './store/project/project.effect';
 import { ProjectListComponent } from './components/project-list/project-list.component';
+import { ProjectDialogComponent } from './components/project-dialog/project-dialog.component';
+import { taskReducer } from './store/task/task.reduce';
+import { TaskEffects } from './store/task/task.effect';
+import { CreateTaskDialogComponent } from './components/create-task-dialog/create-task-dialog.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -36,6 +44,8 @@ import { ProjectListComponent } from './components/project-list/project-list.com
     CreateProjectComponent,
     CreateProjectDialogComponent,
     ProjectListComponent,
+    ProjectDialogComponent,
+    CreateTaskDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,19 +58,23 @@ import { ProjectListComponent } from './components/project-list/project-list.com
     MatDividerModule,
     MatButtonModule,
     MatDialogModule,
-    StoreModule.forRoot<AppState>({projects:projectReducer}),
+    StoreModule.forRoot<AppState>({projects:projectReducer, tasks:taskReducer}),
     StoreDevtoolsModule.instrument({
       maxAge:25,
       logOnly: !isDevMode()
     }),
-    EffectsModule.forRoot([ProjectEffects])
+    EffectsModule.forRoot([ProjectEffects, TaskEffects]),
+    MatDatepickerModule,
+    MatSelectModule,
+    MatListModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true},
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideNativeDateAdapter()
   ],
   bootstrap: [AppComponent]
 })

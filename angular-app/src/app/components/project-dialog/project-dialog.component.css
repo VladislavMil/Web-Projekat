@@ -1,0 +1,26 @@
+mat-card {
+    margin: 20px;
+    padding: 20px;
+}
+
+mat-card-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+mat-card-content p {
+    font-size: 16px;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+mat-divider {
+    margin: 20px 0;
+}
+
+mat-list-item {
+    margin: 30px 0;
+}

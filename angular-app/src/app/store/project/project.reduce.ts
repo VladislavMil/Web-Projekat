@@ -5,7 +5,7 @@ import { Action } from 'rxjs/internal/scheduler/Action';
 import { createReducer, on } from '@ngrx/store';
 
 
-export interface projectState extends EntityState<Project> {}
+export interface projectState extends EntityState<Project> { }
 
 const adapter = createEntityAdapter<Project>();
 
