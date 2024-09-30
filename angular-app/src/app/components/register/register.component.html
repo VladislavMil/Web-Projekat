@@ -1,16 +1,28 @@
-<mat-card>
-  <mat-card-title>Register</mat-card-title>
-  <mat-card-content>
-    <form (ngSubmit)="register()">
+<div class="container">
+  <h3>Please Register</h3>
+  <mat-card>
+    <mat-card-content>
       <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
         <input matInput [(ngModel)]="username" name="username" required>
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="password-input">
         <mat-label>Password</mat-label>
-        <input matInput [(ngModel)]="password" name="password" type="password" required>
+        <input matInput [(ngModel)]="password" name="password" type="password" required
+          (ngModelChange)="checkPassword()">
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Register</button>
-    </form>
-  </mat-card-content>
-</mat-card>
+      <ul>
+        <li [ngClass]="{'valid': passwordLengthValid, 'invalid': !passwordLengthValid}">Must be between 8 and 20
+          characters</li>
+        <li [ngClass]="{'valid': passwordHasNumber, 'invalid': !passwordHasNumber}">At least 1 number</li>
+        <li [ngClass]="{'valid': passwordHasCapital, 'invalid': !passwordHasCapital}">At least 1 capital letter</li>
+      </ul>
+      <button mat-raised-button (click)="register()" [disabled]="!isFormValid()">Register!</button>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <p>Already have an account?</p>
+      <a routerLink="/login">Log-In!</a>
+    </mat-card-content>
+  </mat-card>
+</div>

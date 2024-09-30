@@ -1,7 +1,8 @@
-<mat-card>
-  <mat-card-title>Login</mat-card-title>
-  <mat-card-content>
-    <form>
+<div class="container">
+  <h2>Welcome!</h2>
+  <h3>Please Log-In</h3>
+  <mat-card>
+    <mat-card-content>
       <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
         <input matInput [(ngModel)]="username" name="username" required>
@@ -10,8 +11,14 @@
         <mat-label>Password</mat-label>
         <input matInput [(ngModel)]="password" name="password" type="password" required>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="login()">Login</button>
-    </form>
-  </mat-card-content>
-  <button (click)="navigateToRegister()">Register</button>
-</mat-card>
+      <div>
+        <button mat-raised-button color="primary" (click)="login()">Log-In!</button>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-content>
+      <p>No account?</p>
+      <a routerLink="/register">Sign-In!</a>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { WorkspaceComponent } from './components/workspace/workspace.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     HttpClientModule,
     MatInputModule,
-    
+    MatDividerModule,
+    MatButtonModule
   ],
   providers: [
     provideClientHydration(),
