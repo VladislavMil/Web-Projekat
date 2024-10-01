@@ -10,14 +10,12 @@ import { Subscription } from 'rxjs';
 export class FriendListComponent {
 
   private subscription!: Subscription;
-  //messages: string[] = [];
   friend: string = '';
 
   constructor(private webSocketService: WebSocketService) {}
 
   ngOnInit() {
     this.subscription = this.webSocketService.listen('friendReq').subscribe((message) => {
-     // this.messages.push(message);
       console.log(message);
     });
   }
