@@ -16,4 +16,8 @@ export class TaskService {
   createTask(task: Task) {
     return this.http.post<Task>('http://localhost:3000/task', task);
   }
+
+  updateTask(id: number) {
+    return this.http.put<Task>(`http://localhost:3000/task/${id}`, {});
+  }
 }

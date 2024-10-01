@@ -3,6 +3,7 @@
     <mat-card-content class="project-description">
         <p>{{ data.description }}</p>
         <button mat-raised-button color="primary" (click)="createTask(data.id)">Create Task</button>
+        <button mat-raised-button color="primary" (click)="deleteProject(data.id)">Delete Project</button>
     </mat-card-content>
     <mat-divider></mat-divider>
     <mat-card-content class="project-tasks">
@@ -13,10 +14,20 @@
                     <div class="task-container">
                         <p class="task-title">{{ task.title }}</p>
                         <p class="task-description">{{ task.description }}</p>
+                        <p class="task-deadline">{{ task.deadline | date:'yyyy-MM-dd'}}</p>
                         <p class="task-status">{{ task.importance }}</p>
-                        <button mat-raised-button class="task-button">Finish</button>
+                        <button mat-raised-button class="task-button" (click)="finishTask(task.id)">Finish</button>
                     </div>
                 </mat-card>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <mat-card-title class="finished-tasks">Finished tasks</mat-card-title>
+        <mat-list>
+            <mat-list-item *ngFor="let finishedTask of finishedTasks | async" class="finished-task-item">
+                <p class="finished-task-title">{{ finishedTask.title }}</p>
             </mat-list-item>
         </mat-list>
     </mat-card-content>

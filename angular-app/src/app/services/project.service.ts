@@ -10,11 +10,15 @@ export class ProjectService {
 
   constructor(private http: HttpClient) { }
 
-  create(project: any) : Observable<Project>{
+  create(project: any): Observable<Project> {
     return this.http.post<Project>('http://localhost:3000/project', project);
   }
 
   getAll(): Observable<Project[]> {
     return this.http.get<Project[]>('http://localhost:3000/project');
+  }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:3000/project/${id}`);
   }
 }

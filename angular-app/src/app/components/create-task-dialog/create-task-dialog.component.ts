@@ -18,7 +18,7 @@ export class CreateTaskDialogComponent {
   task = {
     title: '',
     description: '',
-    deadline: '',
+    deadline: new Date(),
     importance: ''
   };
 

@@ -39,4 +39,16 @@ export class ProjectEffects {
             )
         )
     );
+
+    deleteProject$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(ProjectActions.deleteProject),
+            mergeMap(action =>
+                this.projectService.delete(action.id).pipe(
+                    map(() => ProjectActions.deleteProjectSuccess({ id: action.id })),
+                    catchError(error => of(ProjectActions.deleteProjectFailure({ error })))
+                )
+            )
+        )
+    );
 }

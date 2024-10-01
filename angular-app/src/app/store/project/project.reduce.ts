@@ -13,4 +13,5 @@ export const initialState: projectState = adapter.getInitialState();
 
 export const projectReducer = createReducer(initialState,
     on(Actions.loadProjectsSuccess, (state, { projects }) => adapter.setAll(projects, state)),
-    on(Actions.createProjectSuccess, (state, { project }) => adapter.addOne(project, state)));
+    on(Actions.createProjectSuccess, (state, { project }) => adapter.addOne(project, state)),
+    on(Actions.deleteProjectSuccess, (state, { id }) => adapter.removeOne(id, state)));

@@ -11,7 +11,7 @@ export class TaskEffects {
     constructor(
         private actions$: Actions,
         private taskService: TaskService
-    ) {}
+    ) { }
 
     loadTasks$ = createEffect(() =>
         this.actions$.pipe(
@@ -32,6 +32,18 @@ export class TaskEffects {
                 this.taskService.createTask(action.task).pipe(
                     map(task => TaskActions.createTaskSuccess({ task })),
                     catchError(error => of(TaskActions.createTaskFailure({ error })))
+                )
+            )
+        )
+    );
+
+    updateTask$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(TaskActions.updateTask),
+            mergeMap(action =>
+                this.taskService.updateTask(action.id).pipe(
+                    map(task => TaskActions.updateTaskSuccess({ task })),
+                    catchError(error => of(TaskActions.updateTaskFailure({ error })))
                 )
             )
         )

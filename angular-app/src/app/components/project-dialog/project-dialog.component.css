@@ -49,3 +49,9 @@
 .task-card {
     margin: 20px;
 }
+
+.finished-tasks {
+    margin: 30px;
+    text-align: center;
+    font-size: large;
+}

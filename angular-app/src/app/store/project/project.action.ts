@@ -29,3 +29,18 @@ export const createProjectFailure = createAction(
     '[Project] Create Project Failure',
     props<{ error: any }>()
 );
+
+export const deleteProject = createAction(
+    '[Project] Delete Project',
+    props<{ id: number }>()
+);
+
+export const deleteProjectSuccess = createAction(
+    '[Project] Delete Project Success',
+    props<{ id: number }>()
+);
+
+export const deleteProjectFailure = createAction(
+    '[Project] Delete Project Failure',
+    props<{ error: any }>()
+);

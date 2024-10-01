@@ -13,4 +13,5 @@ export const initialState: taskState = adapter.getInitialState();
 
 export const taskReducer = createReducer(initialState,
     on(Actions.loadTasksSuccess, (state, { tasks }) => adapter.setAll(tasks, state)),
-    on(Actions.createTaskSuccess, (state, { task }) => adapter.addOne(task, state)));
+    on(Actions.createTaskSuccess, (state, { task }) => adapter.addOne(task, state)),
+    on(Actions.updateTaskSuccess, (state, { task }) => adapter.updateOne({ id: task.id, changes: task }, state)));

@@ -4,4 +4,6 @@ export interface Task {
     description: string;
     projectId: number;
     importance: string;
+    deadline?: Date;
+    status?: boolean;
 }
