@@ -33,7 +33,7 @@ import { CreateTaskDialogComponent } from './components/create-task-dialog/creat
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [

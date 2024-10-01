@@ -1,26 +1,47 @@
-mat-card {
+.project-card {
+    width: 500px;
+    max-height: 700px;
+    overflow: auto;
+}
+
+.project-title {
+    text-align: center;
     margin: 20px;
-    padding: 20px;
 }
 
-mat-card-title {
-    font-size: 24px;
-    font-weight: bold;
+.project-description {
+    margin: 20px;
 }
 
-mat-card-content p {
-    font-size: 16px;
+.tasks {
+    margin: 30px;
+    text-align: center;
+    font-size: large;
 }
 
-mat-card-actions {
+.task-item {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
 }
 
-mat-divider {
-    margin: 20px 0;
+.task-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
-mat-list-item {
-    margin: 30px 0;
+.task-title {
+    flex: 2;
+    margin-right: 10px;
+}
+
+.task-description {
+    flex: 3;
+    margin-right: 10px;
+}
+
+.task-button {
+    flex: 1;
 }
