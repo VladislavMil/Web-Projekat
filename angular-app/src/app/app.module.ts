@@ -34,6 +34,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
+import { FriendListComponent } from './components/friend-list/friend-list.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { MatListModule } from '@angular/material/list';
     ProjectListComponent,
     ProjectDialogComponent,
     CreateTaskDialogComponent,
+    FriendListComponent,
+    NotificationsComponent,
+    ChatListComponent,
   ],
   imports: [
     BrowserModule,
