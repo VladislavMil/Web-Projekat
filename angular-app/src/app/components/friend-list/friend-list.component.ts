@@ -13,9 +13,7 @@ export class FriendListComponent {
   //messages: string[] = [];
   friend: string = '';
 
-  constructor(private webSocketService: WebSocketService) {
-
-  }
+  constructor(private webSocketService: WebSocketService) {}
 
   ngOnInit() {
     this.subscription = this.webSocketService.listen('friendReq').subscribe((message) => {

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { WebSocketService } from '../../services/web-socket.service';
 
 @Component({
   selector: 'app-chat-list',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class ChatListComponent {
 
+  private subscription!: Subscription;
+
+  constructor(private webSocketService: WebSocketService) { }
+
+  ngOnInit() {
+    this.subscription = this.webSocketService.listen('allRequests').subscribe((message) => {
+      console.log(message);
+    });
+  }
+
+  allFriendRequests() { }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { map, merge, Observable, Subscription } from 'rxjs';
 import { WebSocketService } from '../../services/web-socket.service';
 import { Friendship } from '../../models/friendship.model';
 
@@ -10,25 +10,30 @@ import { Friendship } from '../../models/friendship.model';
 })
 export class NotificationsComponent {
 
-  private subscription!: Subscription;
-  private listSubscription!: Subscription;
+  private observableAll$!: Observable<Friendship[]>;
+  private observableNotification$!: Observable<Friendship[]>;
   public requests: Friendship[] = [];
   constructor(private webSocketService: WebSocketService) { }
 
   ngOnInit() {
     this.webSocketService.emit('allRequests', {});
-    this.subscription = this.webSocketService.listen('friendReq').subscribe((friendReq) => {
-      // this.messages.push(message);
-      console.log(friendReq);
-      this.requests.push(friendReq);
-    });
-    this.listSubscription = this.webSocketService.listen('allRequests').subscribe((requests) => {
-      this.requests = requests;
-      console.log(requests);
+    this.observableAll$ = this.webSocketService.listen('friendReq').pipe(map((e:Friendship)=>{
+      return [e];
+    }))
+    this.observableNotification$ = this.webSocketService.listen('allRequests');
+    merge(this.observableAll$, this.observableNotification$).subscribe((data: Friendship[]) => {
+      for (let i = 0; i < data.length; i++) {
+        this.requests.push(data[i]);
+      }
     });
   }
+
   ngOnDestroy() {
-    this.subscription.unsubscribe();
     this.webSocketService.close();
+  }
+
+  acceptRequest(id: number) {
+    this.webSocketService.emit('acceptRequest', id);
+    this.requests = this.requests.filter((request) => request.id !== id);
   }
 }
