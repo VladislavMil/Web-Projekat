@@ -3,3 +3,7 @@
     <p *ngIf="!request.user">{{ request.username}}</p>
     <button mat-raised-button (click)="acceptRequest(request.id)">Action</button>
 </div>
+<mat-divider></mat-divider>
+<div *ngFor="let chat of chatList">
+    <p>{{ chat.user.username }}</p>
+</div>

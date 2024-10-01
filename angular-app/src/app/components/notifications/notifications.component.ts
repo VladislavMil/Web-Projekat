@@ -13,6 +13,7 @@ export class NotificationsComponent {
   private observableAll$!: Observable<Friendship[]>;
   private observableNotification$!: Observable<Friendship[]>;
   public requests: Friendship[] = [];
+  public chatList: Friendship[] = [];
   constructor(private webSocketService: WebSocketService) { }
 
   ngOnInit() {
@@ -22,8 +23,14 @@ export class NotificationsComponent {
     }))
     this.observableNotification$ = this.webSocketService.listen('allRequests');
     merge(this.observableAll$, this.observableNotification$).subscribe((data: Friendship[]) => {
+      console.log(data);
       for (let i = 0; i < data.length; i++) {
-        this.requests.push(data[i]);
+        if(data[i].status === false){
+          this.requests.push(data[i]);
+        }
+        else{
+          this.chatList.push(data[i]);
+        }
       }
     });
   }
