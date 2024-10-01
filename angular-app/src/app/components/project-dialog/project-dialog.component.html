@@ -9,11 +9,14 @@
         <p class="tasks">Tasks</p>
         <mat-list>
             <mat-list-item *ngFor="let task of tasks | async" class="task-item">
-                <div class="task-container">
-                    <p class="task-title">{{ task.title }}</p>
-                    <p class="task-description">{{ task.description }}</p>
-                    <button mat-raised-button color="warn" class="task-button">Delete</button>
-                </div>
+                <mat-card class="task-card">
+                    <div class="task-container">
+                        <p class="task-title">{{ task.title }}</p>
+                        <p class="task-description">{{ task.description }}</p>
+                        <p class="task-status">{{ task.importance }}</p>
+                        <button mat-raised-button class="task-button">Finish</button>
+                    </div>
+                </mat-card>
             </mat-list-item>
         </mat-list>
     </mat-card-content>

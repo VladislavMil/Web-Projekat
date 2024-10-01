@@ -28,7 +28,7 @@
 
 .task-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
 }
 
@@ -44,4 +44,8 @@
 
 .task-button {
     flex: 1;
+}
+
+.task-card {
+    margin: 20px;
 }
