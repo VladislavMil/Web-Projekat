@@ -1,0 +1,25 @@
+.workspace-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px);
+    gap: 20px;
+}
+
+.workspace-card {
+    width: 750px;
+    padding: 20px;
+    height: 750px;
+    display: flex;
+}
+
+.create-project-card {
+    width: 200px;
+    padding: 20px;
+}
+
+.logout-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

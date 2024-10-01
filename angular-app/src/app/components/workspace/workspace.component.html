@@ -1,4 +1,11 @@
-<p> {{username}} </p>
-<button mat-raised-button color="primary" (click)="logout()">Logout</button>
-<app-create-project></app-create-project>
-<app-project-list></app-project-list>
+<div class="workspace-container">
+    <mat-card class="workspace-card">
+        <app-project-list></app-project-list>
+    </mat-card>
+    <mat-card class="create-project-card">
+        <app-create-project></app-create-project>
+    </mat-card>
+</div>
+<div class="logout-container">
+    <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+</div>
