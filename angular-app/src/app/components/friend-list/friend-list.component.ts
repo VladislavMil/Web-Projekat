@@ -32,5 +32,6 @@ export class FriendListComponent {
   confirmFriend() {
     console.log('Friend confirmed:', this.friend);
     this.sendFriendRequest();
+    this.friend = '';
   }
 }
