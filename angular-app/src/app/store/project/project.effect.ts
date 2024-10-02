@@ -30,7 +30,6 @@ export class ProjectEffects {
         this.actions$.pipe(
             ofType(ProjectActions.createProject),
             mergeMap(action => {
-                console.log('Action:', action);
                 return this.projectService.create(action.project).pipe(
                     map(project => ProjectActions.createProjectSuccess({ project })),
                     catchError(error => of(ProjectActions.createProjectFailure({ error })))

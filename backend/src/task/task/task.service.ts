@@ -63,7 +63,6 @@ export class TaskService {
 
     async updateStatus(id: number): Promise<Task> {
         let res=await this.taskRepository.update(id, { status: true });
-        console.log(res);
         return this.taskRepository.findOneBy({id});
     }
 }

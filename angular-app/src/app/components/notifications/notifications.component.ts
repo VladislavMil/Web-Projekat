@@ -23,7 +23,6 @@ export class NotificationsComponent {
     }))
     this.observableNotification$ = this.webSocketService.listen('allRequests');
     merge(this.observableAll$, this.observableNotification$).subscribe((data: Friendship[]) => {
-      console.log(data);
       for (let i = 0; i < data.length; i++) {
         if(data[i].status === false){
           this.requests.push(data[i]);

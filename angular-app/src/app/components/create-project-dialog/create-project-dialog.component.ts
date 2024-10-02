@@ -17,8 +17,6 @@ export class CreateProjectDialogComponent {
   constructor(private store: Store<AppState>, private dialogRef: MatDialogRef<CreateProjectDialogComponent>) { }
 
   onSubmit() {
-    console.log('Project Name:', this.projectName);
-    console.log('Project Description:', this.projectDescription);
     this.store.dispatch(createProject({project: {
       name: this.projectName, description: this.projectDescription,
       id: 0,

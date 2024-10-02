@@ -1,9 +1,14 @@
-<div *ngFor="let request of requests">
-    <p *ngIf="request.user">{{ request.user.username}}</p>
-    <p *ngIf="!request.user">{{ request.username}}</p>
-    <button mat-raised-button (click)="acceptRequest(request.id)">Action</button>
-</div>
-<mat-divider></mat-divider>
-<div *ngFor="let chat of chatList">
-    <p>{{ chat.user.username }}</p>
-</div>
+<mat-card>
+    <mat-card-title>Notifications</mat-card-title>
+    <mat-card-content>
+        <div *ngFor="let request of requests" class="request-item">
+            <p *ngIf="request.user">Friend request from: {{ request.user.username }}</p>
+            <p *ngIf="!request.user">{{ request.username }}</p>
+            <button mat-raised-button color="primary" (click)="acceptRequest(request.id)">Confirm</button>
+        </div>
+        <mat-divider></mat-divider>
+        <div *ngFor="let chat of chatList" class="chat-item">
+            <p>Chat with: {{ chat.user.username }}</p>
+        </div>
+    </mat-card-content>
+</mat-card>

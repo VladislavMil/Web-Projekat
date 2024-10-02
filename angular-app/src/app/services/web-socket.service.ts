@@ -18,7 +18,6 @@ export class WebSocketService {
       const decodedToken: any = jwtDecode(token);
       userId = decodedToken.id;
     }
-    console.log('User ID:', userId);
     this.socket = io('http://localhost:3000', {
       query: { userId }
     });

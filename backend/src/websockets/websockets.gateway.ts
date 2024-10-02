@@ -22,7 +22,6 @@ export class WebsocketsGateway implements OnGatewayConnection, OnGatewayDisconne
     const userId = Number(client.handshake.query.userId);
     if (userId) {
       this.userSocketMap.set(userId, client.id);
-      console.log('Client connected:', client.id, 'User ID:', userId);
     }
   }
 
@@ -30,17 +29,14 @@ export class WebsocketsGateway implements OnGatewayConnection, OnGatewayDisconne
     const userId = Number(client.handshake.query.userId);
     if (userId) {
       this.userSocketMap.delete(userId);
-      console.log('Client disconnected:', client.id, 'User ID:', userId);
     }
   }
 
   @SubscribeMessage('friendReq')
   async handleMessage(client: Socket, payload: any): Promise<string> {
     const userId = Number(client.handshake.query.userId);
-    console.log('User ID:', userId);
     const user = await this.userService.getUser(userId);
     const sendUser = await this.userService.findOneByUsername(payload);
-    console.log('Send User:', sendUser);
 
     const friendship = new Friendship();
     friendship.id = 0;
@@ -48,7 +44,6 @@ export class WebsocketsGateway implements OnGatewayConnection, OnGatewayDisconne
     friendship.friendId = sendUser.id;
     friendship.status = false;
     const savedFriendship = await this.friendshipService.create(friendship);
-    console.log('Received message from client:', payload);
 
     const targetSocketId = this.userSocketMap.get(sendUser.id);
     if (targetSocketId) {
@@ -60,9 +55,7 @@ export class WebsocketsGateway implements OnGatewayConnection, OnGatewayDisconne
   @SubscribeMessage('allRequests')
   async allFriendRequests(client: Socket, payload: boolean) {
     const userId = Number(client.handshake.query.userId);
-    console.log('User ID:', userId);
     const requests=(await this.friendshipService.findAllById(userId));
-    console.log('Received message from client:', payload);
     const targetSocketId = this.userSocketMap.get(userId);
     if (targetSocketId) {
       this.server.to(targetSocketId).emit('allRequests', requests);
@@ -72,10 +65,7 @@ export class WebsocketsGateway implements OnGatewayConnection, OnGatewayDisconne
   @SubscribeMessage('acceptRequest')
   async acceptRequest(client: Socket, payload: number) {
     const userId = Number(client.handshake.query.userId);
-    console.log('User ID:', userId);
     const friendship = await this.friendshipService.update(payload);
-    console.log('Friend ship:', friendship);
-    console.log('Received message from client:', payload);
     const targetSocketId = this.userSocketMap.get(friendship.friendId);
     if (targetSocketId) {
       this.server.to(targetSocketId).emit('acceptRequest', friendship);

@@ -16,7 +16,6 @@ export class FriendListComponent {
 
   ngOnInit() {
     this.subscription = this.webSocketService.listen('friendReq').subscribe((message) => {
-      console.log(message);
     });
   }
 
@@ -30,7 +29,6 @@ export class FriendListComponent {
   }
 
   confirmFriend() {
-    console.log('Friend confirmed:', this.friend);
     this.sendFriendRequest();
     this.friend = '';
   }

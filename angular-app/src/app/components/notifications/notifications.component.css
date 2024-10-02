@@ -1,0 +1,19 @@
+mat-card {
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+}
+
+.request-item, .chat-item {
+    margin-bottom: 10px;
+    display: flex;;
+}
+
+mat-divider {
+    margin: 20px 0;
+}
+
+mat-card-title {
+    text-align: center;
+    margin-bottom: 10px;
+}

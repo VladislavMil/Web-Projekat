@@ -22,7 +22,6 @@ export class ProjectListComponent {
   }
 
   openDialog(project: Project) {
-    console.log(project);
     this.dialog.open(ProjectDialogComponent, { data: project });
   }
 }
