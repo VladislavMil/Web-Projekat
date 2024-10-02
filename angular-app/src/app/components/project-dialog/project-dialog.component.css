@@ -28,22 +28,21 @@
 
 .task-container {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
     width: 100%;
+    margin-top: 5px;
 }
 
 .task-title {
     flex: 2;
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 .task-description {
     flex: 3;
     margin-right: 10px;
-}
-
-.task-button {
-    flex: 1;
 }
 
 .task-card {
@@ -54,4 +53,22 @@
     margin: 30px;
     text-align: center;
     font-size: large;
+}
+
+.finished-task-title {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.task-deadline {
+    margin-right: 30px;
+}
+
+.task-status{
+    margin-right: 5px;
+}
+
+.delete-button {
+    color: red;
+    margin-left: 20px;
 }

@@ -11,3 +11,19 @@ mat-form-field {
 button {
     align-self: flex-end;
 }
+
+mat-card {
+    width: 350px;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+mat-card-content {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+mat-card-title{
+    text-align: center;
+}

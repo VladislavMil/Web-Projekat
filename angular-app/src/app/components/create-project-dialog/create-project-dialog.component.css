@@ -3,7 +3,7 @@
     padding: 20px;
 }
 
-.mat-form-field {
+mat-form-field {
     width: 100%;
     margin-bottom: 20px;
 }
@@ -11,4 +11,8 @@
 .button-container {
     display: flex;
     justify-content: flex-end;
+}
+
+input {
+    width: 100%;
 }
